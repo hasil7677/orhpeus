@@ -24,10 +24,6 @@ Two builds, in progress:
 
 See [`local/README.md`](local/README.md) for setup and running it.
 
-## Design docs
-
-The `.md` files in the repo root are architecture notes written while designing the pipeline — latency budgets, model comparisons, audio engineering reference, and the original technical design doc. Useful background, not all of it reflects the final implementation 1:1 (see `local/` for what's actually built and running).
-
 ## License
 
 MIT — see [LICENSE](LICENSE).

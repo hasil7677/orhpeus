@@ -16,6 +16,13 @@ local/assets/*.bin
 # Test-generated artifacts
 local/tests/_tts_smoke_output.wav
 
+# Design notes — kept locally, not published
+/artitecture.md
+/audio_engineering_and_rankings.md
+/local_project_tdd.md
+/stt_tts_deep_dive.md
+/voice_pipeline_architecture.md
+
 # OS cruft
 .DS_Store
 Thumbs.db
