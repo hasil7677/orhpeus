@@ -1,0 +1,27 @@
+# orpheus
+
+A real-time, voice-to-voice AI pipeline — speak to it, it talks back, with low enough latency to feel like a conversation.
+
+Two builds, in progress:
+
+- **[`local/`](local/)** — runs speech detection, transcription, and voice synthesis entirely on your own GPU (tested on a 4GB GTX 1650), with the LLM ("brain") outsourced to [Groq's](https://console.groq.com) free API. Privacy for the parts that matter, low latency, no local LLM hardware required.
+- **cloud** (planned) — a fully API-based version (STT + LLM + TTS all cloud-hosted) for when you don't have a GPU at all.
+
+## Stack (local build)
+
+| Stage | Model | Where it runs |
+|---|---|---|
+| Voice activity detection | [Silero VAD](https://github.com/snakers4/silero-vad) | CPU |
+| Speech-to-text | [Moonshine](https://github.com/moonshine-ai/moonshine) (ONNX) | GPU |
+| LLM | Groq-hosted (`openai/gpt-oss-20b`) | Cloud |
+| Text-to-speech | [Kokoro](https://github.com/thewh1teagle/kokoro-onnx) (82M, ONNX) | GPU |
+
+See [`local/README.md`](local/README.md) for setup and running it.
+
+## Design docs
+
+The `.md` files in the repo root are architecture notes written while designing the pipeline — latency budgets, model comparisons, audio engineering reference, and the original technical design doc. Useful background, not all of it reflects the final implementation 1:1 (see `local/` for what's actually built and running).
+
+## License
+
+MIT — see [LICENSE](LICENSE).

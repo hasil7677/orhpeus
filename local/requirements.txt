@@ -1,0 +1,41 @@
+# Python 3.11 required (kokoro-onnx needs <3.14; PyTorch has no CUDA wheels for 3.14 yet)
+
+# VAD — CPU only, no GPU needed. Unpinned so pip resolves a torch/torchaudio
+# pair with matching ABIs (silero-vad pulls in torchaudio transitively).
+torch
+silero-vad==5.1.2
+
+# STT — Moonshine via ONNX Runtime (GPU)
+useful-moonshine-onnx
+
+# TTS — Kokoro via ONNX Runtime (GPU)
+kokoro-onnx[gpu]==0.4.9
+
+# Shared ONNX Runtime GPU build (CUDA 12.x, matches driver 580.97 / GTX 1650)
+onnxruntime-gpu==1.20.1
+
+# CUDA/cuDNN runtime DLLs (Windows has no system CUDA Toolkit install here —
+# these pip packages provide the .dlls onnxruntime-gpu needs; gpu_setup.py
+# puts them on PATH before onnxruntime is imported)
+nvidia-cudnn-cu12
+nvidia-cublas-cu12
+nvidia-cuda-runtime-cu12
+nvidia-cuda-nvrtc-cu12
+nvidia-cufft-cu12
+
+# LLM — Groq (OpenAI-compatible streaming client)
+groq==1.5.0
+
+# Audio I/O
+pyaudio==0.2.14
+soundfile==0.12.1
+
+# Signal processing / audio cleanup
+numpy==2.1.3
+scipy==1.14.1
+noisereduce==3.0.3
+pyloudnorm==0.1.1
+
+# Config & env
+pydantic==2.10.3
+python-dotenv==1.0.1
